@@ -3,14 +3,16 @@
 
 This repo contains configurations to run against the LLC Maintain application for Land Registry.
 
-## Installation
+## Installation & running
 Clone the repository locally
 
 Navigate to the repository folder
 
 Run
 
-'''./run_wraith.sh'''
+```
+./run_wraith.sh
+```
 
 # Files of note
 
@@ -29,4 +31,8 @@ The configuration file
 ## javascript/login.js
 Simple javascript file which logs in to the application if the login form is displayed.
 
-It will complete the login form using the specified username and password.
+It will complete the login form using the username and password specified in the file.
+
+# To be done
+- Figure out how to add session information for the llc add / vary pages
+- Figure out how to add session information for the user add / edit pages
