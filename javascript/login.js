@@ -1,16 +1,15 @@
 module.exports = function (phantom, ready) {
-
+    
+    // test interaction on the page
     phantom.evaluate(function(){
-      if (document.getElementById("loginform")!=null)
-      {
-        // Enter username and password in the input fields
-        document.getElementById("username-input").value="llclradmin@nonexistanttest.com";
-        document.getElementById("password-input").value="password";
-        document.getElementById("loginform").submit();
-      }
+        if (document.getElementById("loginform")!=null)
+        {
+            // Enter username and password in the input fields
+            document.getElementById("username-input").value="lr_admin_1@email.com";
+            document.getElementById("password-input").value="t3sTP@ss";
+            document.getElementById("btnSubmit").click();
+        }
     });
 
-    phantom.open(phantom.url, function () {
-      setTimeout(ready, 5000);
-    });
-  }
+    setTimeout(function(){ready();}, 20000);
+}
