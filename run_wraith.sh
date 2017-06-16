@@ -101,8 +101,3 @@ echo "         '::::-/__    __.-::::'"
 echo "          '-::::::::::::::-'"
 echo "              '''::::'''"
 wraith capture configs/capture.yaml
-
-echo "**********************************"
-echo "*     Opening wraith gallery     *"
-echo "**********************************"
-open shots/gallery.html
