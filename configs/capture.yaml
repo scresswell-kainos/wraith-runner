@@ -58,16 +58,47 @@ mode: diffs_first
 # (required) The paths to capture. All paths should exist for both of the domains specified above.
 paths:
   home: /
-  forgottenpassword: /account/reset/forgottenpassword
-  invalidtoken: /account/reset/invalidtoken
-  resetrequest: /account/reset/resetrequest
-  add-land-charge: /add-land-charge
-  add-provisions: /add-land-charge/add-provisions
-  admin: /admin
-  land-registry: /admin/land-registry
-  search-results: /admin/search-results
-  add: /admin/user/add
+  forgotten-password: /account/reset/forgottenpassword
+  invalid-token: /account/reset/invalidtoken
+  reset-request: /account/reset/resetrequest
   error: /error
+  page-not-found: /page-not-found
   login: /login
   logout: /logout
   search: /search
+  # add-land-charge: /add-land-charge
+  # add-provisions: /add-land-charge/add-provisions
+  # add-location: /add-land-charge/add-location
+  # add-more-information: /add-land-charge/more-information
+  # add-additional-information: /add-land-charge/additional-info
+  # add-charge-reason: /add-land-charge/charge-reason
+  # add-charge-date: /add-land-charge/charge-date
+  # add-expiry: /add-land-charge/expiry
+  # add-confirmation: /add-land-charge/confirmation
+  view-land-charge: /view-land-charge/LLC-FCDPP
+  view-land-charge-history: /view-land-charge/LLC-2H/history
+  # modify-edit-provisions:	modify-land-charge/edit-provisions
+  # modify-edit-location: /modify-land-charge/vary-location
+  # modify-edit-additional-info: /modify-land-charge/additional-info
+  # modify-edit-more-info: /modify-land-charge/more-information
+  # modify-edit-charge-expiry: /modify-land-charge/expiry
+  # modify-edit-charge-reason: /modify-land-charge/charge-reason
+  # modify-edit-charge-date: /modify-land-charge/charge-date
+  # modify-confirm:: /modify-land-charge/confirm
+  cancel-land-charge: /cancel-land-charge/LLC-FCDPP
+  # search-llc1: /create-llc1/search
+  # search-llc1-extent-create:	/create-llc1/extent
+  # search-llc1-extent-description: /create-llc1/description
+  # search-llc1-extent-result: LC1 search result	/create-llc1/result
+  admin: /admin
+  admin-land-registry-landing: /admin/land-registry
+  admin-search-results: /admin/search-results
+  admin-add: /admin/user/add
+  admin-view-user: /admin/user/view/llclrusers%40nonexistanttest.com
+  # admin-add-user-role: /admin/user/add/role
+  # admin-add-user-details: /admin/user/add/details
+  # admin-add-user-confirm: /admin/user/add/confirm-details
+  # admin-add-summary: /admin/user/summary
+  # admin-edit-user-details: /admin/user/edit/details
+  # admin-edit-confirm-details: /admin/user/edit/confirm-details
+  # admin-edit-confirm-details: /admin/user/view/p%40ulwright.com?updated=True
