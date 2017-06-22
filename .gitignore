@@ -6,3 +6,4 @@ data.txt
 *.swp
 Gemfile.lock
 .idea/
+*.zip
