@@ -7,78 +7,81 @@ module.exports = function (phantom, ready) {
             page_location = page.cookies[i].value
         }
     }
+    console.log(page_location)
 
     root_url = phantom.url.split('/').slice(0,3).join('/')
     page_url = root_url + page_location
 
     local_session_body = {
-        "user": {
-            "surname": "Admin",
-            "status": "Active",
-            "first_name": "LR",
-            "organisation": "HM Land Registry",
-            "email": "llclradmin@nonexistanttest.com",
-            "roles": [
-            "LLC LR Admins"
-            ],
-            "permissions": [
-                "Edit Accounts",
-                "Create LR User",
-                "Browse LLC",
-                "Cancel LLC",
-                "Request LLC1",
-                "Add LLC",
-                "Vary LLC",
-                "Retrieve LLC",
-                "Create LA User",
-                "Add LON",
-                "Create LA Admin",
-                "Set User Organisation",
-                "View Accounts",
-                "Search Users",
-                "Account Management",
-                "Archive Accounts",
-                "Create LR Admin",
-                "Change Account Role",
-                "Change Account Status"
-            ]
-        },
-        "maintain_frontend": session_config[page_location]
-    }
+          "user": {
+                  "id": "16e2be01-6356-4c48-ad82-822bfbae65bb",
+                  "first_name": "Jane",
+                  "surname": "Doe",
+                  "email": "lr_admin_1@email.com",
+                  "organisation": "HM Land Registry",
+                  "status": "Active",
+                  "roles": [
+                            "LLC LR Admins"
+                            ],
+                  "permissions": [
+                                  "Edit Accounts",
+                                  "Create LR User",
+                                  "Browse LLC",
+                                  "Cancel LLC",
+                                  "Request LLC1",
+                                  "Add LLC",
+                                  "Vary LLC",
+                                  "Retrieve LLC",
+                                  "Create LA User",
+                                  "Add LON",
+                                  "Create LA Admin",
+                                  "Set User Organisation",
+                                  "View Accounts",
+                                  "Search Users",
+                                  "Account Management",
+                                  "Archive Accounts",
+                                  "Create LR Admin",
+                                  "Change Account Role",
+                                  "Change Account Status"
+                                  ]
+                  },
+                  "maintain_frontend": session_config[page_location]
+      }
 
     preview_session_body = {
         "user": {
-            "surname": "Doe",
-            "status": "Active",
-            "first_name": "Jane",
-            "organisation": "HM Land Registry",
-            "email": "lr_admin_1@email.com",
-            "roles": [
-            "LLC LR Admins"
-            ],
-            "permissions": [
-                "Edit Accounts",
-                "Create LR User",
-                "Browse LLC",
-                "Cancel LLC",
-                "Request LLC1",
-                "Add LLC",
-                "Vary LLC",
-                "Retrieve LLC",
-                "Create LA User",
-                "Add LON",
-                "Create LA Admin",
-                "Set User Organisation",
-                "View Accounts",
-                "Search Users",
-                "Account Management",
-                "Archive Accounts",
-                "Create LR Admin",
-                "Change Account Role",
-                "Change Account Status"
-            ]
-        },
-        "maintain_frontend": session_config[page_location]
+                "id": "16e2be01-6356-4c48-ad82-822bfbae65bb",
+                "first_name": "Jane",
+                "surname": "Doe",
+                "email": "lr_admin_1@email.com",
+                "organisation": "HM Land Registry",
+                "status": "Active",
+                "roles": [
+                          "LLC LR Admins"
+                          ],
+                "permissions": [
+                                "Edit Accounts",
+                                "Create LR User",
+                                "Browse LLC",
+                                "Cancel LLC",
+                                "Request LLC1",
+                                "Add LLC",
+                                "Vary LLC",
+                                "Retrieve LLC",
+                                "Create LA User",
+                                "Add LON",
+                                "Create LA Admin",
+                                "Set User Organisation",
+                                "View Accounts",
+                                "Search Users",
+                                "Account Management",
+                                "Archive Accounts",
+                                "Create LR Admin",
+                                "Change Account Role",
+                                "Change Account Status"
+                                ]
+                },
+                "maintain_frontend": session_config[page_location]
     }
 
     local_session_key = create_session_key('http://localhost:8001/v1.0/sessions')

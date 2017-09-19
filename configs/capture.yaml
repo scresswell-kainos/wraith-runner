@@ -25,12 +25,12 @@ domains:
 screen_widths:
 #  - 320
 #  - 600x768
-  # - 768
-  - 1024
-  # - 1280
+# - 768
+- 1024
+# - 1280
 
 # (optional) JavaScript file to execute before taking screenshot of every path. Default: nil
-# before_capture: 'javascript/login.js'
+# before_capture: 'javascript/login-refactored.js'
 #before_capture: 'javascript/disable_javascript--phantom.js'
 
 # (required) The directory that your screenshots will be stored in
@@ -40,7 +40,7 @@ directory: 'shots'
 fuzz: '20%'
 
 # (optional) The maximum acceptable level of difference (in %) between two images before Wraith reports a failure. Default: 0
-threshold: 5
+threshold: 2
 
 # (optional) Specify the template (and generated thumbnail sizes) for the gallery output.
 gallery:
@@ -58,33 +58,72 @@ mode: diffs_first
 
 # (required) The paths to capture. All paths should exist for both of the domains specified above.
 paths:
-  home: 
+# Pages that don't require log in
+  login:
+    path: /login
+  forgotten-password:
+    path: /account//forgottenpassword
+  invalid-token:
+    path: /account//invalidtoken
+  # -request:
+  # path: /account//request
+  error:
+    path: /error
+  page-not-found:
+    path: /page-not-found
+  login:
+    path: /login
+# Pages that require you to be logged in
+  logout:
+    path: /logout
+  home:
     path: /
     before_capture: 'javascript/login-refactored.js'
-  # forgotten-password: 
-  #   path: /account/reset/forgottenpassword
-  #   before_capture: 'javascript/login-refactored.js'
-  # invalid-token: 
-  #   path: /account/reset/invalidtoken
-  #   before_capture: 'javascript/login-refactored.js'
-  # reset-request:
-  #   path: /account/reset/resetrequest
-  #   before_capture: 'javascript/login-refactored.js'
-  # error: 
-  #   path: /error
-  #   before_capture: 'javascript/login-refactored.js'
-  # page-not-found:
-  #   path: /page-not-found
-  #   before_capture: 'javascript/login-refactored.js'
-  # login:
-  #   path: /login
-  #   before_capture: 'javascript/login-refactored.js'
-  # logout:
-  #   path: /logout
-  #   before_capture: 'javascript/login-refactored.js'
-  # search:
-  #   path: /search
-  #   before_capture: 'javascript/login-refactored.js'
+  error-logged-in:
+    path: /error
+    before_capture: 'javascript/login-refactored.js'
+  page-not-found-logged-in:
+    path: /page-not-found
+    before_capture: 'javascript/login-refactored.js'
+  admin:
+    path: /admin
+    before_capture: 'javascript/login-refactored.js'
+  admin-land-registry-landing:
+    path: /admin/land-registry
+    before_capture: 'javascript/login-refactored.js'
+  admin-search-results:
+    path: /admin/search-results
+    before_capture: 'javascript/login-refactored.js'
+  admin-add:
+    path: /admin/user/add
+    before_capture: 'javascript/login-refactored.js'
+#  admin-view-user:
+#    path:  /admin/user/view/la_admin1%40email.com
+#    before_capture: 'javascript/login-refactored.js'
+  admin-add-user-role:
+    path: /admin/user/add/role
+    before_capture: 'javascript/login-refactored.js'
+  admin-add-user-details:
+    path: /admin/user/add/details
+    before_capture: 'javascript/login-refactored.js'
+  admin-add-user-confirm:
+    path: /admin/user/add/confirm-details
+    before_capture: 'javascript/login-refactored.js'
+  admin-add-summary:
+    path: /admin/user/summary
+    before_capture: 'javascript/login-refactored.js'
+  admin-edit-user-details:
+    path: /admin/user/edit/details
+    before_capture: 'javascript/login-refactored.js'
+  admin-edit-confirm-details:
+    path: /admin/user/edit/confirm-details
+    before_capture: 'javascript/login-refactored.js'
+  # admin-edit-confirm-details:
+  # path: /admin/user/view/la_admin1%40email.com?updated=True
+    before_capture: 'javascript/login-refactored.js'
+  search:
+    path: /search
+    before_capture: 'javascript/login-refactored.js'
   # add-land-charge:
   #   path: /add-land-charge
   #   before_capture: 'javascript/login-refactored.js'
@@ -93,7 +132,7 @@ paths:
     before_capture: 'javascript/login-refactored.js'
   add-location:
     path: /add-land-charge/add-location
-    before_capture: 'javascript/login-refactored.js'    
+    before_capture: 'javascript/login-refactored.js'
   # add-more-information: /add-land-charge/more-information
   # add-additional-information: /add-land-charge/additional-info
   # add-charge-reason: /add-land-charge/charge-reason
@@ -116,15 +155,3 @@ paths:
   # search-llc1-extent-create:	/create-llc1/extent
   # search-llc1-extent-description: /create-llc1/description
   # search-llc1-extent-result: LC1 search result	/create-llc1/result
-  # admin: /admin
-  # admin-land-registry-landing: /admin/land-registry
-  # admin-search-results: /admin/search-results
-  # admin-add: /admin/user/add
-  # admin-view-user: /admin/user/view/llclrusers%40nonexistanttest.com
-  # admin-add-user-role: /admin/user/add/role
-  # admin-add-user-details: /admin/user/add/details
-  # admin-add-user-confirm: /admin/user/add/confirm-details
-  # admin-add-summary: /admin/user/summary
-  # admin-edit-user-details: /admin/user/edit/details
-  # admin-edit-confirm-details: /admin/user/edit/confirm-details
-  # admin-edit-confirm-details: /admin/user/view/p%40ulwright.com?updated=True
