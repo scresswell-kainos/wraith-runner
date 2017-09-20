@@ -1,5 +1,4 @@
 module.exports = {
-    '/': {},
     '/add-land-charge/add-provisions': { "add_charge_state": {
             "charge-type": "Planning",
             "originating-authority": "HM Land Registry"
