@@ -18,29 +18,30 @@ phantomjs_options: '--web-security=false --ignore-ssl-errors=true --ssl-protocol
 
 # (required) The domains to take screenshots of.
 domains:
-  local:        "http://localhost:8080"
+#  local:        "http://localhost:8080"
+  integration:  "http://llc-integration-frontend.service.dev.ctp.local"
   preview:      "http://llc-preview-frontend.service.dev.ctp.local"
 
 # (required) Screen widths (and optional height) to resize the browser to before taking the screenshot.
 screen_widths:
 #  - 320
 #  - 600x768
-  # - 768
-  - 1024
-  # - 1280
+# - 768
+- 1024
+# - 1280
 
 # (optional) JavaScript file to execute before taking screenshot of every path. Default: nil
-# before_capture: 'javascript/login.js'
-#before_capture: 'javascript/disable_javascript--phantom.js'
+# before_capture: 'javascript/disable_javascript--phantom.js'
+before_capture: 'javascript/login.js'
 
 # (required) The directory that your screenshots will be stored in
 directory: 'shots'
 
 # (required) Amount of fuzz ImageMagick will use when comparing images. A higher fuzz makes the comparison less strict.
-fuzz: '20%'
+fuzz: '10%'
 
 # (optional) The maximum acceptable level of difference (in %) between two images before Wraith reports a failure. Default: 0
-threshold: 5
+threshold: 2
 
 # (optional) Specify the template (and generated thumbnail sizes) for the gallery output.
 gallery:
@@ -54,77 +55,129 @@ gallery:
 #   diffs_first - all paths (with or without a difference) are shown, sorted by difference size (largest first)
 #   diffs_only - only paths with a difference are shown, sorted by difference size (largest first)
 # Note: different screen widths are always grouped together.
-mode: diffs_first
+mode: alphanumeric
 
 # (required) The paths to capture. All paths should exist for both of the domains specified above.
 paths:
-  home: 
+  app-login:
+    path: /login
+  app-logout:
+    path: /logout
+  app-home:
     path: /
-    before_capture: 'javascript/login-refactored.js'
-  # forgotten-password: 
-  #   path: /account/reset/forgottenpassword
-  #   before_capture: 'javascript/login-refactored.js'
-  # invalid-token: 
-  #   path: /account/reset/invalidtoken
-  #   before_capture: 'javascript/login-refactored.js'
-  # reset-request:
-  #   path: /account/reset/resetrequest
-  #   before_capture: 'javascript/login-refactored.js'
-  # error: 
-  #   path: /error
-  #   before_capture: 'javascript/login-refactored.js'
-  # page-not-found:
-  #   path: /page-not-found
-  #   before_capture: 'javascript/login-refactored.js'
-  # login:
-  #   path: /login
-  #   before_capture: 'javascript/login-refactored.js'
-  # logout:
-  #   path: /logout
-  #   before_capture: 'javascript/login-refactored.js'
-  # search:
-  #   path: /search
-  #   before_capture: 'javascript/login-refactored.js'
-  # add-land-charge:
-  #   path: /add-land-charge
-  #   before_capture: 'javascript/login-refactored.js'
-  add-provisions:
-    path: /add-land-charge/add-provisions
-    before_capture: 'javascript/login-refactored.js'
-  add-location:
+  account-new-request:
+    path: /account/reset/request
+  app-error:
+    path: /error
+  app-page-not-found:
+    path: /page-not-found
+  maintain-search:
+    path: /search
+  maintain-add-location:
     path: /add-land-charge/add-location
-    before_capture: 'javascript/login-refactored.js'    
-  # add-more-information: /add-land-charge/more-information
-  # add-additional-information: /add-land-charge/additional-info
-  # add-charge-reason: /add-land-charge/charge-reason
-  # add-charge-date: /add-land-charge/charge-date
-  # add-expiry: /add-land-charge/expiry
-  # add-confirmation: /add-land-charge/confirmation
-  # view-land-charge: /view-land-charge/LLC-FCDPP
-  # view-land-charge-history: /view-land-charge/LLC-FCDPP/history
-  # modify-edit-charge-expiry: /modify-land-charge/LLC-FCDPP
-  # modify-edit-provisions:	modify-land-charge/edit-provisions
-  # modify-edit-location: /modify-land-charge/vary-location
-  # modify-edit-additional-info: /modify-land-charge/additional-info
-  # modify-edit-more-info: /modify-land-charge/more-information
-  # modify-edit-charge-expiry: /modify-land-charge/expiry
-  # modify-edit-charge-reason: /modify-land-charge/charge-reason
-  # modify-edit-charge-date: /modify-land-charge/charge-date
-  # modify-confirm:: /modify-land-charge/confirm
-  # cancel-land-charge: /cancel-land-charge/LLC-FCDPP
-  # search-llc1: /create-llc1/search
-  # search-llc1-extent-create:	/create-llc1/extent
-  # search-llc1-extent-description: /create-llc1/description
-  # search-llc1-extent-result: LC1 search result	/create-llc1/result
-  # admin: /admin
-  # admin-land-registry-landing: /admin/land-registry
-  # admin-search-results: /admin/search-results
-  # admin-add: /admin/user/add
-  # admin-view-user: /admin/user/view/llclrusers%40nonexistanttest.com
-  # admin-add-user-role: /admin/user/add/role
-  # admin-add-user-details: /admin/user/add/details
-  # admin-add-user-confirm: /admin/user/add/confirm-details
-  # admin-add-summary: /admin/user/summary
-  # admin-edit-user-details: /admin/user/edit/details
-  # admin-edit-confirm-details: /admin/user/edit/confirm-details
-  # admin-edit-confirm-details: /admin/user/view/p%40ulwright.com?updated=True
+  maintain-add-provisions:
+    path: /add-land-charge/add-provisions
+  maintain-llc1-create-llc1:
+    path: /create-llc1/location
+  admin-lr:
+    path: /admin/land-registry
+  admin-add:
+    path: /admin/user/add/rol
+  maintain-add-more-information:
+    path: /add-land-charge/more-information
+  maintain-add-charge-reason:
+    path: /add-land-charge/charge-reason
+  maintain-add-charge-date:
+    path: /add-land-charge/charge-date
+  maintain-add-confirmation:
+    path: /add-land-charge/confirmation
+  maintain-add-additional-information:
+    path: /add-land-charge/additional-info
+  maintain-add-expiry-information:
+    path: /add-land-charge/expiry
+  maintain-view-land-charge:
+    path: /view-land-charge/LLC-FCDQ2
+  maintain-view-land-charge-history:
+    path: /view-land-charge/LLC-FCDQ2/history
+  maintain-view-cancel-land-charge:
+    path: /cancel-land-charge/LLC-FCDQ2
+  maintain-vary-edit-charge-expiry:
+    path: /modify-land-charge/LLC-FCDQ2
+  maintain-lon-applicant-info:
+    path: /add-lon/applicant-info
+  maintain-lon-dominant-building:
+    path: /add-lon/dominant-building
+  maintain-lon-upload-lon-documents:
+    path: /add-lon/upload-lon-documents
+  maintain-lon-dominant-building-extent:
+    path: /add-lon/dominant-building-extent
+  maintain-lon-land-interest:
+    path: /add-lon/land-interest
+  maintain-lon-servient-structure-height:
+    path: /add-lon/servient-structure-height
+  maintain-lon-servient-structure-position:
+    path: /add-lon/servient-structure-position
+  maintain-lon-confirmation:
+    path: /add-lon/confirmation
+  admin-edit-user-details:
+    path: /admin/user/edit/details
+  admin-add-user-details:
+    path: /admin/user/add/details
+  admin-add-user-confirm:
+   path: /admin/user/add/confirm-details
+  admin-edit-confirm-details:
+    path: /admin/user/edit/confirm-details
+######################### WIP BELOW THIS LINE #####################
+#  account-forgotten-password:
+#    path: /account/reset/forgottenpassword
+#  account-invalid-token:
+#    path: /account/reset/invalidtoken
+#maintain-vary-edit-provisions:
+#  path: modify-land-charge/edit-provisions
+#maintain-vary-edit-location:
+#  path: /modify-land-charge/vary-location
+#  before_capture: 'javascript/login.js'
+#maintain-vary-edit-additional-info:
+#  path: /modify-land-charge/additional-info
+#  before_capture: 'javascript/login.js'
+#maintain-vary-edit-more-info:
+#  path: /modify-land-charge/more-information
+#  before_capture: 'javascript/login.js'
+#maintain-vary-edit-charge-expiry:
+#  path: /modify-land-charge/expiry
+#  before_capture: 'javascript/login.js'
+#maintain-vary-edit-charge-reason:
+#  path: /modify-land-charge/charge-reason
+#  before_capture: 'javascript/login.js'
+#maintain-vary-edit-charge-date:
+#  path: /modify-land-charge/charge-date
+#  before_capture: 'javascript/login.js'
+#maintain-vary-confirm:
+#  path: /modify-land-charge/confirm
+#  before_capture: 'javascript/login.js'
+#maintain-llc1-extent-create:
+#  path: /create-llc1/extent
+#  before_capture: 'javascript/login.js'
+#maintain-llc1-extent-description:
+#  path: /create-llc1/description
+#  before_capture: 'javascript/login.js'
+#maintain-llc1-extent-result:
+#  path:
+#  before_capture: 'javascript/login.js'
+#maintain-llc1-search-result:
+#  path: /create-llc1/result
+#  before_capture: 'javascript/login.js'
+
+#####need custom JS
+#  admin-search-results:
+#    path: /admin/search-results
+
+#####not sure if we can do
+#  admin-add-confirmation:
+#    path: /admin/user/user/user-added
+#  admin-edit-confirmation:
+#    path: /admin/user/view/la_admin1%40email.com?updated=True
+#  admin-view-user:
+#    path: /admin/user/view/9cb24a00-152d-456f-abe2-b9960b883ec4
+#  admin-view-user-history:
+#    path: /admin/user/history/9cb24a00-152d-456f-abe2-b9960b883ec4
